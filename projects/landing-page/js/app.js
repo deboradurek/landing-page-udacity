@@ -61,3 +61,30 @@ allSections.forEach(function (section) {
   menuItem.appendChild(menuItemLink); // append link to li
   menuList.appendChild(menuItem); // append li to ul
 });
+
+// Find all links and add a listener to each one:
+// ToDo
+
+const allLinks = document.querySelectorAll('a');
+
+allLinks.forEach(function (eachLink) {
+  eachLink.addEventListener('click', function () {
+    eachLink.classList.add();
+    console.log(eachLink.classList);
+  });
+});
+
+// Detect if section is in viewport
+
+function sectionActive() {
+  for (const section of allSections) {
+    const box = section.getBoundingClientRect();
+    if (box.top <= 150 && box.bottom >= 150) {
+      section.classList.add('active-class');
+    } else {
+      section.classList.remove('active-class');
+    }
+  }
+}
+
+document.addEventListener('scroll', sectionActive);
