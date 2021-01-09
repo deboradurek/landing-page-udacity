@@ -59,6 +59,7 @@ allSections.forEach(function (section) {
   menuItemLink.setAttribute('href', `#${section.id}`); // set href = section id
   menuItemLink.classList.add('menu__link'); // add class to link for styling
   menuItemLink.classList.add(section.id); // add class to link = section id
+  menuItemLink.addEventListener('click', scrollToView(section.id));
   menuItem.appendChild(menuItemLink); // append link to li
   menuList.appendChild(menuItem); // append li to ul
 });
@@ -68,7 +69,7 @@ allSections.forEach(function (section) {
 function sectionActive() {
   for (const section of allSections) {
     const box = section.getBoundingClientRect();
-    if (box.top <= 150 && box.bottom >= 150) {
+    if (box.top <= 300 && box.bottom >= 300) {
       section.classList.add('active-class');
       document.querySelector(`.${section.id}`).classList.add('active-link');
     } else {
@@ -79,3 +80,18 @@ function sectionActive() {
 }
 
 document.addEventListener('scroll', sectionActive);
+
+// Scroll to anchor ID using scrollTO event
+
+const allMenuLinks = document.querySelectorAll('.menu__link');
+
+function scrollToView(sectionId) {
+  return function (event) {
+    event.preventDefault();
+    const section = document.getElementById(sectionId);
+    window.scroll({
+      top: section.offsetTop,
+      behavior: 'smooth',
+    });
+  };
+}
