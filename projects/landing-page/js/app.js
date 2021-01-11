@@ -148,6 +148,6 @@ buildNavBar();
 buttonToTop();
 
 /**
- * End Events
+ * Function Calls
  *
  */
