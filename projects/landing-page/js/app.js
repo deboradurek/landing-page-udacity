@@ -129,4 +129,42 @@ window.addEventListener('mousemove', function () {
   time = setTimeout(hideMenu, 2000);
 });
 
-// Scroll to page button visible only below fold of the page
+// Scroll to top using button which gets visible only below fold of the page
+
+// Create button to scroll to top
+function buttonToTop() {
+  const offset = window.pageYOffset;
+  const pageFold = window.innerHeight / 2;
+  const buttonUp = document.createElement('button');
+  buttonUp.classList.add('button-up');
+  buttonUp.textContent = 'Top';
+  buttonUp.addEventListener('click', goToTop);
+  document.body.appendChild(buttonUp);
+
+  if (offset > pageFold) {
+    buttonUp.style.display = 'flex';
+  } else {
+    buttonUp.style.display = 'none';
+  }
+}
+
+// Scroll to top after user clicks on the created button
+function goToTop() {
+  document.body.scrollTop = 0; // For Safari users
+  document.documentElement.scrollTop = 0;
+}
+
+buttonToTop();
+
+document.addEventListener('scroll', function () {
+  const [buttonUp] = document.getElementsByClassName('button-up');
+  const offset = window.pageYOffset;
+  const pageFold = window.innerHeight / 2;
+  console.log(offset);
+  console.log(pageFold);
+  if (offset > pageFold) {
+    buttonUp.style.display = 'flex';
+  } else {
+    buttonUp.style.display = 'none';
+  }
+});
