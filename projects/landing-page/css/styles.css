@@ -253,7 +253,7 @@ section.active-class .landing__container::after {
   background-color: rgb(214, 214, 164);
   color: rgb(0, 21, 99);
   cursor: pointer;
-  padding: 15px;
+  padding: 10px 15px;
   border-radius: 12px;
   font-size: 16px;
 }
