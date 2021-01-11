@@ -69,6 +69,7 @@ section {
   padding-left: 0;
   margin: 0;
   text-align: right;
+  background: rgb(179, 231, 206);
 }
 
 .navbar__menu li {

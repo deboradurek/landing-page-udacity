@@ -48,20 +48,23 @@
 
 // Set sections as active
 
-const allSections = Array.from(document.getElementsByTagName('section')); // transform all sections in an array
+// Transform all sections in an array
+const allSections = Array.from(document.getElementsByTagName('section'));
 
-const menuList = document.querySelector('#navbar__list'); // select ul to append li
+// Select ul to append li
+const menuList = document.querySelector('#navbar__list');
 
+// Build dynamic navbar and append all menu items
 allSections.forEach(function (section) {
-  const menuItem = document.createElement('li'); // create li
-  const menuItemLink = document.createElement('a'); // create link
-  menuItemLink.textContent = section.dataset.nav; // link text = section data-nav
-  menuItemLink.setAttribute('href', `#${section.id}`); // set href = section id
-  menuItemLink.classList.add('menu__link'); // add class to link for styling
-  menuItemLink.classList.add(section.id); // add class to link = section id
+  const menuItem = document.createElement('li');
+  const menuItemLink = document.createElement('a');
+  menuItemLink.textContent = section.dataset.nav;
+  menuItemLink.setAttribute('href', `#${section.id}`);
+  menuItemLink.classList.add('menu__link');
+  menuItemLink.classList.add(section.id);
   menuItemLink.addEventListener('click', scrollToView(section.id));
-  menuItem.appendChild(menuItemLink); // append link to li
-  menuList.appendChild(menuItem); // append li to ul
+  menuItem.appendChild(menuItemLink);
+  menuList.appendChild(menuItem);
 });
 
 // Detect which section is in viewport and add active classes to Section and Menu Item
@@ -69,7 +72,7 @@ allSections.forEach(function (section) {
 function sectionActive() {
   for (const section of allSections) {
     const box = section.getBoundingClientRect();
-    if (box.top <= 300 && box.bottom >= 300) {
+    if (box.top <= 150 && box.bottom >= 150) {
       section.classList.add('active-class');
       document.querySelector(`.${section.id}`).classList.add('active-link');
     } else {
@@ -83,15 +86,47 @@ document.addEventListener('scroll', sectionActive);
 
 // Scroll to anchor ID using scrollTO event
 
-const allMenuLinks = document.querySelectorAll('.menu__link');
-
 function scrollToView(sectionId) {
+  // Returns section id from sectionActive()
   return function (event) {
-    event.preventDefault();
+    const menuListHeight = document.getElementById('navbar__list').offsetHeight;
     const section = document.getElementById(sectionId);
+
+    event.preventDefault();
+    // Scroll smoothly to section considering navBar height
     window.scroll({
-      top: section.offsetTop,
+      top: section.offsetTop - menuListHeight,
       behavior: 'smooth',
     });
   };
 }
+
+// Hide navBar when no action is detected
+
+// Set time
+let time = null;
+
+// Hides navBar
+function hideMenu() {
+  menuList.style.display = 'none';
+}
+
+// NavBar hides after 2 seconds if no scroll is detected
+window.addEventListener('scroll', function () {
+  if (time !== null) {
+    menuList.style.display = 'block';
+    clearTimeout(time);
+  }
+  time = setTimeout(hideMenu, 2000);
+});
+
+// NavBar hides after 2 seconds if no mousemove is detected
+window.addEventListener('mousemove', function () {
+  if (time !== null) {
+    menuList.style.display = 'block';
+    clearTimeout(time);
+  }
+  time = setTimeout(hideMenu, 2000);
+});
+
+// Scroll to page button visible only below fold of the page
