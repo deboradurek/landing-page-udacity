@@ -59,7 +59,8 @@ main {
 
 section {
   position: relative;
-  min-height: 80vh;
+  /* min-height: 80vh; */
+  margin-bottom: 2rem;
 }
 
 /* ---- Module Rules ---- */
@@ -112,15 +113,29 @@ section {
 
 /* ---- Theme Rules ---- */
 /* Landing Container Styles */
+
 .landing__container {
-  padding: 1em;
+  padding: 0 1em;
   text-align: left;
+  /* display: none; */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 600ms ease-out;
+}
+
+.landing__container-expanded {
+  /* display: block; */
+  max-height: 1200px;
+}
+
+.landing__container p:last-child {
+  margin-bottom: 5rem;
 }
 
 @media only screen and (min-width: 35em) {
   .landing__container {
     max-width: 50em;
-    padding: 4em;
+    padding: 0 4em;
   }
 }
 
@@ -218,6 +233,8 @@ section.active-class {
     rgba(0, 0, 0, 0.3) 0%,
     rgba(0, 0, 0, 0) 100%
   );
+  overflow: hidden;
+  border-radius: 12px;
 }
 
 section.active-class .landing__container::before {
@@ -259,5 +276,25 @@ section.active-class .landing__container::after {
 }
 
 .button-up:hover {
-  background-color: #cc1; /* Add a dark-grey background on hover */
+  background-color: #cc1;
+}
+
+.collapse {
+  background-color: inherit;
+  color: inherit;
+  padding: 18px;
+  width: 100%;
+  font-size: 1.5rem;
+  border-radius: 12px;
+  outline: none;
+  border: rgb(179, 231, 206) solid 2px;
+  cursor: pointer;
+}
+
+.collapse:after {
+  content: '+';
+  font-size: 25px;
+  color: white;
+  float: right;
+  padding-right: 30px;
 }
