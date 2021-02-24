@@ -1,37 +1,25 @@
-# Front End Nanodegree Program
-
-Front End Nanodegree Content & Project Resources
+# Landing Page Project
 
 ## Table of Contents
 
-* [Projects](#projects)
-* [Courses](#courses)
-* [Style-Guide](#style-guide)
+- [Instructions](#instructions)
 
-## Projects
+## Instructions
 
-The following is a list of current projects required to complete the Front End Nanodegree.
+The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
 
-Note that projects that do not include associated starter code are not linked here.
+To get started, open `js/app.js` and start building out the app's functionality
 
-1. Personal Blog Website
-2. [Landing Page](https://github.com/udacity/fend/tree/refresh-2019/projects/landing-page)
-3. [Weather Journal App](https://github.com/udacity/fend/tree/refresh-2019/projects/weather-journal-app)
-4. [Evaluate A News Article with Natural Language Processing](https://github.com/udacity/fend/tree/refresh-2019/projects/evaluate-news-nlp)
-5. Capstone - Travel App
+For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
 
-## Courses
+### General Description
 
-The following is a list of the courses associated with the Front End Nanodegree.
+JS Version: ES2015/ES6
+JS Standard: ESlint
 
-* C1 - CSS, Website Layout, Website Components
-* C2 - JavaScript & The DOM
-* C3 - Web API's and Asynchronous Applications
-* C4 - Build Tools and Single Page Web Apps
-* C5 - Capstone
-
-## Style-Guide
-
-See below for the Udacity Style Guide used thoroughout the Front End Nanodegree.
-
-* [Nanodegree Style Guide](http://udacity.github.io/frontend-nanodegree-styleguide/)
+- Manipulation of DOM.
+- Navigation builds programmatically, according to HTML content.
+- Scrolls to sections from navigation bar.
+- Highlights section in viewport and corresponding link on NavBar upon scrolling.
+- Hides fixed navBar after 2 seconds of inactivity.
+- Scrolls to top button when page if bellow fold.
